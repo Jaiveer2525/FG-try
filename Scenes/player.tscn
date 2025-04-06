@@ -1,19 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvlpbfqwyursp"]
+[gd_scene load_steps=22 format=3 uid="uid://dvlpbfqwyursp"]
 
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_bxon3"]
 [ext_resource type="Texture2D" uid="uid://dbjk7hfcwwjae" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_ov8r8"]
 [ext_resource type="Texture2D" uid="uid://4m4rcdv5sc2i" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/idle2.png" id="2_pvwk4"]
 [ext_resource type="Texture2D" uid="uid://b1e0ftxyooi73" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/idle3.png" id="3_hy13r"]
 [ext_resource type="Texture2D" uid="uid://c3nsbrt71ou2d" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/idle4.png" id="4_7dq1t"]
-[ext_resource type="Texture2D" uid="uid://bliaocxswrfb5" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk1.png" id="5_pryno"]
-[ext_resource type="Texture2D" uid="uid://b22r17yuj01jl" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk2.png" id="6_y22pu"]
-[ext_resource type="Texture2D" uid="uid://b6coppno0erxd" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk3.png" id="7_u8n2v"]
-[ext_resource type="Texture2D" uid="uid://dqywtpcllw4uq" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk4.png" id="8_f28rn"]
-[ext_resource type="Texture2D" uid="uid://b36dgq20so1aj" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk5.png" id="9_pw25t"]
-[ext_resource type="Texture2D" uid="uid://ddxymx4lijdh5" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk6.png" id="10_pr7v7"]
-[ext_resource type="Texture2D" uid="uid://ducjfqg7uuxgk" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk7.png" id="11_7foaf"]
-[ext_resource type="Texture2D" uid="uid://l8lm3etvdr0r" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk8.png" id="12_oso8o"]
-[ext_resource type="Texture2D" uid="uid://bhskfn3emhwr3" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk9.png" id="13_ev7c3"]
-[ext_resource type="Texture2D" uid="uid://dmbtyxsbk7osb" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Walk/walk10.png" id="14_s6c7v"]
+[ext_resource type="Texture2D" uid="uid://bliaocxswrfb5" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk1.png" id="5_pryno"]
+[ext_resource type="Texture2D" uid="uid://b22r17yuj01jl" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk2.png" id="6_y22pu"]
+[ext_resource type="Texture2D" uid="uid://b6coppno0erxd" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk3.png" id="7_u8n2v"]
+[ext_resource type="Texture2D" uid="uid://dqywtpcllw4uq" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk4.png" id="8_f28rn"]
+[ext_resource type="Texture2D" uid="uid://b36dgq20so1aj" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk5.png" id="9_pw25t"]
+[ext_resource type="Texture2D" uid="uid://ddxymx4lijdh5" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk6.png" id="10_pr7v7"]
+[ext_resource type="Texture2D" uid="uid://ducjfqg7uuxgk" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk7.png" id="11_7foaf"]
+[ext_resource type="Texture2D" uid="uid://l8lm3etvdr0r" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk8.png" id="12_oso8o"]
+[ext_resource type="Texture2D" uid="uid://bhskfn3emhwr3" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk9.png" id="13_ev7c3"]
+[ext_resource type="Texture2D" uid="uid://dmbtyxsbk7osb" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Walk/walk10.png" id="14_s6c7v"]
+[ext_resource type="Script" path="res://Scripts/StateMachine.gd" id="16_toxdp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovcsl"]
 animations = [{
@@ -73,14 +75,85 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pad2f"]
 height = 50.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_13hrt"]
+resource_name = "Idle"
+length = 0.80002
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[sub_resource type="Animation" id="Animation_e2p06"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_618i3"]
+_data = {
+"Idle": SubResource("Animation_13hrt"),
+"RESET": SubResource("Animation_e2p06")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_bxon3")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, -32)
 sprite_frames = SubResource("SpriteFrames_ovcsl")
 animation = &"idle"
-frame_progress = 0.0432649
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -25)
 shape = SubResource("CapsuleShape2D_pad2f")
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("16_toxdp")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_618i3")
+}

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bf42sq5h8xpl4"]
 
-[ext_resource type="Texture2D" uid="uid://cwi50dily0fmr" path="res://Assets/Streets of Fight files/Assets/Stage Layers/tileset.png" id="1_k1cxb"]
+[ext_resource type="Texture2D" uid="uid://cwi50dily0fmr" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Stage Layers/tileset.png" id="1_k1cxb"]
 [ext_resource type="PackedScene" uid="uid://dvlpbfqwyursp" path="res://Scenes/player.tscn" id="2_uc8ss"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nk8ii"]
