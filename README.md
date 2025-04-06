@@ -1,1 +1,2 @@
-Theres nothing here, will update when there are things to say.
+Abandonning this.
+GDScript is just... frustrating.

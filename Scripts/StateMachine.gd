@@ -1,7 +1,7 @@
 class_name StateMachine
 extends Node
 
-var current_state: PlayerState
+var current_state: State
 
 @export var starting_state: PlayerState
 
@@ -27,6 +27,6 @@ func change_state(new_state: State) -> void:
 		print("Exiting state: ", current_state)
 		current_state.exit()
 	print("current State: ", current_state)
-	current_state = PlayerIdleState
+	current_state = new_state
 	print("New State: ", current_state)
 	current_state.enter()
