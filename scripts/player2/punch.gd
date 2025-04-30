@@ -1,4 +1,4 @@
-class_name Punch
+class_name Punch2
 extends State
 
 var punch_duration := 0.1

@@ -1,4 +1,4 @@
-class_name Idle
+class_name Idle2
 extends State
 
 func enter():
@@ -6,18 +6,18 @@ func enter():
 	get_parent().get_parent().get_node("Label").text = "idle"
 	var anim_player = player.get_node("AnimatedSprite2D")
 	anim_player.play("Idle")
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("p2right"):
 		get_parent().change_state(get_parent().get_node("MoveRight"))
-	elif Input.is_action_pressed("left"):
+	elif Input.is_action_pressed("p2left"):
 		get_parent().change_state(get_parent().get_node("MoveLeft"))
 
 func handle_input(event: InputEvent):
-	if event.is_action_pressed("right"):
+	if event.is_action_pressed("p2right"):
 		get_parent().change_state(get_parent().get_node("MoveRight"))
-	elif event.is_action_pressed("left"):
+	elif event.is_action_pressed("p2left"):
 		get_parent().change_state(get_parent().get_node("MoveLeft"))
 
-	if Input.is_action_just_pressed("Punch"):
+	if Input.is_action_just_pressed("p2punch"):
 		get_parent().change_state(get_parent().get_node("Punch"))
-	if Input.is_action_just_pressed("Kick"):
+	if Input.is_action_just_pressed("p2kick"):
 		get_parent().change_state(get_parent().get_node("Kick"))

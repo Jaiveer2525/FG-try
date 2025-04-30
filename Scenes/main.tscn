@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://bknu3faudarki"]
+[gd_scene load_steps=6 format=4 uid="uid://bknu3faudarki"]
 
 [ext_resource type="Texture2D" uid="uid://cwi50dily0fmr" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Stage Layers/tileset.png" id="1_okbup"]
 [ext_resource type="PackedScene" uid="uid://c07nrp1aw4hrn" path="res://Scenes/player.tscn" id="1_pgnn1"]
+[ext_resource type="PackedScene" uid="uid://cxhxjagxr23bd" path="res://Scenes/player2.tscn" id="3_loht3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0cmdj"]
 texture = ExtResource("1_okbup")
@@ -533,7 +534,10 @@ tile_map_data = PackedByteArray("AAD8//v/AAAEAAcAAAD8//z/AAAEAAgAAAD8//3/AAAEAAk
 tile_set = SubResource("TileSet_odk13")
 
 [node name="Player" parent="." instance=ExtResource("1_pgnn1")]
-position = Vector2(-43, 0)
+position = Vector2(-36, 0)
+
+[node name="Player2" parent="." instance=ExtResource("3_loht3")]
+position = Vector2(36, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -29)

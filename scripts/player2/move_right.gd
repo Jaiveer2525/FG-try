@@ -1,4 +1,4 @@
-class_name MoveRight
+class_name MoveRight2
 extends State
 
 
@@ -12,14 +12,14 @@ func physics_update(delta: float):
 	player.move_and_slide()
 
 func handle_input(event: InputEvent):
-	if event.is_action_released("right"):
-		if Input.is_action_pressed("left"):
+	if event.is_action_released("p2right"):
+		if Input.is_action_pressed("p2left"):
 			get_parent().change_state(get_parent().get_node("MoveLeft"))
 		else:
 			get_parent().change_state(get_parent().get_node("Idle"))
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("p2left"):
 		get_parent().change_state(get_parent().get_node("MoveLeft"))
-	if Input.is_action_just_pressed("Punch"):
+	if Input.is_action_just_pressed("p2punch"):
 		get_parent().change_state(get_parent().get_node("Punch"))
-	if Input.is_action_just_pressed("Kick"):
+	if Input.is_action_just_pressed("p2kick"):
 		get_parent().change_state(get_parent().get_node("Kick"))

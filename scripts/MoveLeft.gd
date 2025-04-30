@@ -1,24 +1,24 @@
-class_name MoveRight
+class_name MoveLeft
 extends State
 
 
 func enter():
-	print("Entered MoveRight State")
-	get_parent().get_parent().get_node("Label").text = "Right"
+	print("Entered Moveleft State")
+	get_parent().get_parent().get_node("Label").text = "Left"
 	
 
 func physics_update(delta: float):
-	player.velocity.x = 3000 * delta
+	player.velocity.x = -3000 * delta
 	player.move_and_slide()
 
 func handle_input(event: InputEvent):
-	if event.is_action_released("right"):
-		if Input.is_action_pressed("left"):
-			get_parent().change_state(get_parent().get_node("MoveLeft"))
+	if event.is_action_released("left"):
+		if Input.is_action_pressed("right"):
+			get_parent().change_state(get_parent().get_node("MoveRight"))
 		else:
 			get_parent().change_state(get_parent().get_node("Idle"))
-	if Input.is_action_pressed("left"):
-		get_parent().change_state(get_parent().get_node("MoveLeft"))
+	if event.is_action_pressed("right"):
+		get_parent().change_state(get_parent().get_node("MoveRight"))
 	if Input.is_action_just_pressed("Punch"):
 		get_parent().change_state(get_parent().get_node("Punch"))
 	if Input.is_action_just_pressed("Kick"):

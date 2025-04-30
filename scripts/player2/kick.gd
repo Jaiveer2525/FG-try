@@ -1,19 +1,19 @@
-class_name Punch
+class_name Kick2
 extends State
 
-var punch_duration := 0.1
+var kick_duration := 0.3
 var elapsed_time := 0.0
 
 func enter():
 	print("Entered Punch State")
-	get_parent().get_parent().get_node("Label").text = "Punch"
+	get_parent().get_parent().get_node("Label").text = "Kick"
 	var sprite: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
-	sprite.play("punch")
+	sprite.play("kick")
 	elapsed_time = 0.0
 	
 
 func physics_update(delta):
 	elapsed_time += delta
-	if elapsed_time >= punch_duration:
+	if elapsed_time >= kick_duration:
 		get_parent().change_state(get_parent().get_node("Idle"))
 	
