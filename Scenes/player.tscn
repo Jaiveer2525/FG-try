@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://c07nrp1aw4hrn"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_v8w7h"]
+[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_x08vs"]
+[ext_resource type="Script" path="res://scripts/Idle.gd" id="3_p5nj1"]
+[ext_resource type="Script" path="res://scripts/MoveRight.gd" id="4_7sgrj"]
+[ext_resource type="Texture2D" uid="uid://bytrvnncelh0m" path="res://Assets/test-fg-char.png" id="5_khmtv"]
+[ext_resource type="Script" path="res://scripts/Punch.gd" id="5_yf2jb"]
+[ext_resource type="Script" path="res://Scenes/MoveLeft.gd" id="6_qb3cx"]
+[ext_resource type="Script" path="res://Scenes/Kick.gd" id="7_hnhgp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tqb0"]
+atlas = ExtResource("5_khmtv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g34kj"]
+atlas = ExtResource("5_khmtv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvkwp"]
+atlas = ExtResource("5_khmtv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hire6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tqb0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g34kj")
+}],
+"loop": true,
+"name": &"kick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvkwp")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yipl5"]
+size = Vector2(10, 29.5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v8w7h")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_x08vs")
+starting_state_path = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_p5nj1")
+
+[node name="MoveRight" type="Node" parent="StateMachine"]
+script = ExtResource("4_7sgrj")
+
+[node name="Punch" type="Node" parent="StateMachine"]
+script = ExtResource("5_yf2jb")
+
+[node name="MoveLeft" type="Node" parent="StateMachine"]
+script = ExtResource("6_qb3cx")
+
+[node name="Kick" type="Node" parent="StateMachine"]
+script = ExtResource("7_hnhgp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_hire6")
+animation = &"punch"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -14.75)
+shape = SubResource("RectangleShape2D_yipl5")
