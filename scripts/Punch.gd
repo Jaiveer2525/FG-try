@@ -1,7 +1,7 @@
 class_name Punch
 extends State
 
-var punch_duration := 0.1
+var punch_duration := 0.15
 var elapsed_time := 0.0
 
 func enter():

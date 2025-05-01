@@ -10,6 +10,9 @@ func enter():
 		get_parent().change_state(get_parent().get_node("MoveRight"))
 	elif Input.is_action_pressed("p2left"):
 		get_parent().change_state(get_parent().get_node("MoveLeft"))
+	
+	if get_parent().get_parent().health < 0:
+		get_parent().chang_state(get_parent().get_node("Dead"))
 
 func handle_input(event: InputEvent):
 	if event.is_action_pressed("p2right"):

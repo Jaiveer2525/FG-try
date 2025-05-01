@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c07nrp1aw4hrn"]
+[gd_scene load_steps=21 format=3 uid="uid://c07nrp1aw4hrn"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_v8w7h"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_x08vs"]
@@ -8,26 +8,36 @@
 [ext_resource type="Texture2D" uid="uid://bytrvnncelh0m" path="res://Assets/test-fg-char.png" id="5_khmtv"]
 [ext_resource type="Script" path="res://scripts/MoveLeft.gd" id="6_ojmg3"]
 [ext_resource type="Script" path="res://scripts/Kick.gd" id="7_lwmyc"]
+[ext_resource type="Script" path="res://scripts/Raycasts.gd" id="9_11fej"]
+[ext_resource type="Script" path="res://scripts/dead.gd" id="9_famoi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tqb0"]
 atlas = ExtResource("5_khmtv")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g34kj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovt6h"]
 atlas = ExtResource("5_khmtv")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0uaxb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay5dw"]
 atlas = ExtResource("5_khmtv")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wvkwp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_snask"]
 atlas = ExtResource("5_khmtv")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o3vc8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq25l"]
 atlas = ExtResource("5_khmtv")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f7b5"]
+atlas = ExtResource("5_khmtv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fci8b"]
+atlas = ExtResource("5_khmtv")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hire6"]
 animations = [{
@@ -41,41 +51,121 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g34kj")
+"texture": SubResource("AtlasTexture_ovt6h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0uaxb")
+"texture": SubResource("AtlasTexture_ovt6h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0uaxb")
+"texture": SubResource("AtlasTexture_ovt6h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0uaxb")
+"texture": SubResource("AtlasTexture_ovt6h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g34kj")
+"texture": SubResource("AtlasTexture_ovt6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snask")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snask")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snask")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snask")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snask")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snask")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovt6h")
 }],
 "loop": true,
 "name": &"kick",
-"speed": 20.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wvkwp")
+"texture": SubResource("AtlasTexture_iq25l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o3vc8")
+"texture": SubResource("AtlasTexture_4f7b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fci8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fci8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fci8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fci8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fci8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f7b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f7b5")
 }],
 "loop": true,
 "name": &"punch",
-"speed": 5.0
+"speed": 60.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yipl5"]
 size = Vector2(10, 29.5)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tm1us"]
+a = Vector2(0, -54)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v8w7h")
+left = "p1left"
+right = "p1right"
+punch = "p1punch"
+kick = "p1kick"
+
+[node name="Raycaster" type="Node2D" parent="."]
+script = ExtResource("9_11fej")
+
+[node name="RayCastLeft" type="RayCast2D" parent="Raycaster"]
+position = Vector2(-3, -19)
+rotation = 1.5708
+collision_mask = 128
+
+[node name="RayCastRight" type="RayCast2D" parent="Raycaster"]
+position = Vector2(3, -19)
+rotation = -1.5708
+collision_mask = 128
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_x08vs")
@@ -96,19 +186,31 @@ script = ExtResource("6_ojmg3")
 [node name="Kick" type="Node" parent="StateMachine"]
 script = ExtResource("7_lwmyc")
 
+[node name="Dead" type="Node" parent="StateMachine"]
+script = ExtResource("9_famoi")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(9, -16)
 sprite_frames = SubResource("SpriteFrames_hire6")
 animation = &"punch"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, -15)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_yipl5")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -28.0
+offset_left = -17.0
 offset_top = -51.0
-offset_right = 10.0
+offset_right = 21.0
 offset_bottom = -28.0
+pivot_offset = Vector2(17, 0)
 text = "Hi"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RaycastTarget" type="StaticBody2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RaycastTarget"]
+shape = SubResource("SegmentShape2D_tm1us")

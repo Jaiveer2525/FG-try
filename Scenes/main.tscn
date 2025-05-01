@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://bknu3faudarki"]
+[gd_scene load_steps=7 format=4 uid="uid://bknu3faudarki"]
 
 [ext_resource type="Texture2D" uid="uid://cwi50dily0fmr" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Stage Layers/tileset.png" id="1_okbup"]
 [ext_resource type="PackedScene" uid="uid://c07nrp1aw4hrn" path="res://Scenes/player.tscn" id="1_pgnn1"]
-[ext_resource type="PackedScene" uid="uid://cxhxjagxr23bd" path="res://Scenes/player2.tscn" id="3_loht3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0cmdj"]
 texture = ExtResource("1_okbup")
@@ -527,18 +526,52 @@ texture = ExtResource("1_okbup")
 [sub_resource type="TileSet" id="TileSet_odk13"]
 sources/0 = SubResource("TileSetAtlasSource_0cmdj")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2qhom"]
+distance = -56.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3chgy"]
+distance = -56.0
+
 [node name="Main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD8//v/AAAEAAcAAAD8//z/AAAEAAgAAAD8//3/AAAEAAkAAAD8//7/AAAEAAoAAAD8////AAAEAAsAAAD9//v/AAAFAAcAAAD9//z/AAAFAAgAAAD9//3/AAAFAAkAAAD9//7/AAAFAAoAAAD9////AAAFAAsAAAD+//v/AAAEAAcAAAD+//z/AAAEAAgAAAD+//3/AAAEAAkAAAD+//7/AAAEAAoAAAD+////AAAEAAsAAAD///v/AAAFAAcAAAD///z/AAAFAAgAAAD///3/AAAFAAkAAAD///7/AAAFAAoAAAD/////AAAFAAsAAAAAAPv/AAAGAAcAAAAAAPz/AAAGAAgAAAAAAP3/AAAGAAkAAAAAAP7/AAAGAAoAAAAAAP//AAAGAAsAAAABAPv/AAAEAAcAAAABAPz/AAAEAAgAAAABAP3/AAAEAAkAAAABAP7/AAAEAAoAAAABAP//AAAEAAsAAAACAPv/AAAFAAcAAAACAPz/AAAFAAgAAAACAP3/AAAFAAkAAAACAP7/AAAFAAoAAAACAP//AAAFAAsAAAADAPv/AAAGAAcAAAADAPz/AAAGAAgAAAADAP3/AAAGAAkAAAADAP7/AAAGAAoAAAADAP//AAAGAAsAAAD8/wAAAAADAA4AAAD9/wAAAAAEAA4AAAD+/wAAAAAFAA4AAAD//wAAAAAGAA4AAAAAAAAAAAAHAA4AAAABAAAAAAAIAA4AAAACAAAAAAAJAA4AAAADAAAAAAAAAA4AAAA=")
 tile_set = SubResource("TileSet_odk13")
 
-[node name="Player" parent="." instance=ExtResource("1_pgnn1")]
-position = Vector2(-36, 0)
-
-[node name="Player2" parent="." instance=ExtResource("3_loht3")]
-position = Vector2(36, 0)
+[node name="Player1" parent="." instance=ExtResource("1_pgnn1")]
+position = Vector2(-28, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -29)
 zoom = Vector2(10, 10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_2qhom")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_3chgy")
+
+[node name="Player2" parent="." instance=ExtResource("1_pgnn1")]
+position = Vector2(33, 0)
+left = "p2left"
+right = "p2right"
+punch = "p2punch"
+kick = "p2kick"
+
+[node name="Player 2 Health" type="Label" parent="."]
+offset_left = 26.0
+offset_top = -66.0
+offset_right = 56.0
+offset_bottom = -43.0
+text = "100"
+
+[node name="Player 1 Health" type="Label" parent="."]
+offset_left = -55.0
+offset_top = -66.0
+offset_right = -25.0
+offset_bottom = -43.0
+text = "100"
