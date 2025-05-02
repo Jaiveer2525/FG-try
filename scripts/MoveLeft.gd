@@ -3,7 +3,7 @@ extends State
 
 
 func enter():
-	print("Entered Moveleft State")
+	#print("Entered Moveleft State")
 	get_parent().get_parent().get_node("Label").text = "Left"
 	
 

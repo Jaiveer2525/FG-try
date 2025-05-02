@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://bknu3faudarki"]
+[gd_scene load_steps=9 format=4 uid="uid://bknu3faudarki"]
 
 [ext_resource type="Texture2D" uid="uid://cwi50dily0fmr" path="res://Assets/Streets of Fight files/Assets/Sprites/Brawler-Girl/Idle/Stage Layers/tileset.png" id="1_okbup"]
 [ext_resource type="PackedScene" uid="uid://c07nrp1aw4hrn" path="res://Scenes/player.tscn" id="1_pgnn1"]
+[ext_resource type="Script" path="res://scripts/player_1_health.gd" id="3_3bvvh"]
+[ext_resource type="Script" path="res://scripts/player_2_health.gd" id="3_ecumg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0cmdj"]
 texture = ExtResource("1_okbup")
@@ -567,11 +569,14 @@ offset_left = 26.0
 offset_top = -66.0
 offset_right = 56.0
 offset_bottom = -43.0
-text = "100"
+text = "0"
+horizontal_alignment = 2
+script = ExtResource("3_ecumg")
 
 [node name="Player 1 Health" type="Label" parent="."]
 offset_left = -55.0
 offset_top = -66.0
 offset_right = -25.0
 offset_bottom = -43.0
-text = "100"
+text = "0"
+script = ExtResource("3_3bvvh")

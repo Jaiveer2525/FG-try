@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c07nrp1aw4hrn"]
+[gd_scene load_steps=23 format=3 uid="uid://c07nrp1aw4hrn"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_v8w7h"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_x08vs"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://scripts/Kick.gd" id="7_lwmyc"]
 [ext_resource type="Script" path="res://scripts/Raycasts.gd" id="9_11fej"]
 [ext_resource type="Script" path="res://scripts/dead.gd" id="9_famoi"]
+[ext_resource type="PackedScene" uid="uid://b63e8i4x4u5is" path="res://Scenes/HitBox.tscn" id="11_84vtk"]
+[ext_resource type="PackedScene" uid="uid://b56uudu2gdncv" path="res://Scenes/HurtBoxBody.tscn" id="12_mefn8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tqb0"]
 atlas = ExtResource("5_khmtv")
@@ -47,7 +49,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -200,9 +202,9 @@ shape = SubResource("RectangleShape2D_yipl5")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -17.0
-offset_top = -51.0
+offset_top = 21.0
 offset_right = 21.0
-offset_bottom = -28.0
+offset_bottom = 44.0
 pivot_offset = Vector2(17, 0)
 text = "Hi"
 horizontal_alignment = 1
@@ -214,3 +216,15 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RaycastTarget"]
 shape = SubResource("SegmentShape2D_tm1us")
+
+[node name="HitBoxPunch" parent="." instance=ExtResource("11_84vtk")]
+position = Vector2(13, 21)
+Damage = 30
+
+[node name="HitBoxKick" parent="." instance=ExtResource("11_84vtk")]
+position = Vector2(19, 12)
+Damage = 70
+
+[node name="HurtBoxBody" parent="." instance=ExtResource("12_mefn8")]
+
+[connection signal="area_exited" from="HurtBoxBody" to="HurtBoxBody" method="_on_area_exited"]

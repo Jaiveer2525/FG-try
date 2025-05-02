@@ -9,7 +9,7 @@ func enter():
 	var punch = get_parent().get_parent().punch
 	var kick = get_parent().get_parent().kick
 
-	print("Entered Idle State")
+	#print("Entered Idle State")
 	get_parent().get_parent().get_node("Label").text = "idle"
 	var anim_player = player.get_node("AnimatedSprite2D")
 	anim_player.play("Idle")

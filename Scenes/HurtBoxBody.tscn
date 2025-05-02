@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56uudu2gdncv"]
+
+[ext_resource type="Script" path="res://scripts/hurt_box_body.gd" id="1_e2sj5"]
+
+[node name="HurtBoxBody" type="Area2D"]
+script = ExtResource("1_e2sj5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(2, -17)
+polygon = PackedVector2Array(6, 7, 2.875, 7, 3, 17, -7, 17, -7, 7, -9, 7, -9, -6, 6, -6)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

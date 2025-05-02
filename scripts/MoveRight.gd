@@ -2,7 +2,7 @@ class_name MoveRight
 extends State
 
 func enter():
-	print("Entered MoveRight State")
+	#print("Entered MoveRight State")
 	get_parent().get_parent().get_node("Label").text = "Right"
 	
 
